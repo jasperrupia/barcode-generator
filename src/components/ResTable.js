@@ -1,65 +1,39 @@
 import React from 'react'
+import Row from './Row'
 
-const ResTable = () => {
+const ResTable = ({startNumber, endNumber}) => {
   return (
-<div class="flex flex-col">
-  <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
-    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="overflow-hidden">
-        <table class="min-w-full">
-          <thead class="bg-white border-b">
-            <tr>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+<div className="flex flex-col">
+  <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+    <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div className="overflow-hidden">
+        <table className="min-w-full">
+          <thead className="bg-white border-b">
+            <tr className='text-center'>
+              <th scope="col" className="text-sm text-center font-medium text-gray-900 px-6 py-4">
                 #
               </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
                 Barcode Id
               </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
                 Given
               </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
                 Remainder
               </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
                 Generated
               </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
                 Validity
               </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
                 DateTime
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="bg-gray-100 border-b text-right">
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
-                1
-              </td>
-              <td class="text-sm text-center text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                01
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                24434001
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                7
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                244340017
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                EE244340017TZ
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                244340017
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                2023-08-05 @ 17:42:56
-              </td>
-            </tr>
-          </tbody>
+          <Row startNumber={startNumber} endNumber={endNumber} />
         </table>
       </div>
     </div>
