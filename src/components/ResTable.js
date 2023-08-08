@@ -6,7 +6,7 @@ const ResTable = ({startNumber, length}) => {
   const numbers = Array.from({ length: length }, (_, index) => index + 1);
   // const inputDigits = [...startNumber].map(Number);
   const weightingFactor = [8, 6, 4, 2, 3, 5, 9, 7];
-  startNumber = parseInt(startNumber);
+  startNumber = parseInt(--startNumber);
 
   return (
     <div className="flex flex-col">
