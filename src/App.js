@@ -5,9 +5,11 @@ import React, { useState } from "react";
 function App() {
   var [startNumber, setStartNumber] = useState("");
   const [length, setLength] = useState("");
+  const [showComponent, setShowComponent] = useState(false);
+  const [buttonValue, setButtonValue] = useState("Generate");
   // const [error, setError] = useState("");
 
-  // const handleButtonClick = () => {
+  const handleButtonClick = () => {
   //   if (startNumber.trim() === '' || length.trim() === '') {
   //     setError('Please enter numbers before clicking the button.');
   //   } else if(startNumber.trim() < 10000000) {
@@ -18,11 +20,8 @@ function App() {
   //     setStartNumber(10000001)
   //     setLength(40)
   //   }
-  // };
-
-  const handleChange = (event) => {
-    const startNumber = event.target.value;
-    setStartNumber(startNumber);
+    setShowComponent(true);
+    setButtonValue("Done");
   };
 
   return (
@@ -48,7 +47,11 @@ function App() {
                     max={99999999}
                     value={startNumber}
                     placeholder="Enter a number"
-                    onChange={handleChange}
+                    onChange={ function (e) {
+                      setShowComponent(false);
+                      setStartNumber(e.target.value);
+                      setButtonValue("Generate");
+                    }}
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
@@ -65,7 +68,11 @@ function App() {
                     max={10000}
                     placeholder="1 ~ 10,000"
                     value={length}
-                    onChange={(e) => setLength(e.target.value)}
+                    onChange={ function (e) { 
+                      setShowComponent(false);
+                      setLength(e.target.value);
+                      setButtonValue("Generate")
+                    }}
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
@@ -73,17 +80,20 @@ function App() {
 
               {/* {error && <div className="w-full pb-2 text-center text-red-500">{error}</div>} */}
               
-              {/* <div className="p-2 w-full">
-                <button onClick={handleButtonClick} className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                  Generate
+              <div className="p-2 w-full">
+                <button 
+                  onClick={handleButtonClick} 
+                  // disabled={setShowComponent}
+                  className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                  {buttonValue}
                 </button>
-              </div> */}
+              </div>
 
             </div>
           </div>
 
           <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200">
-            <ResTable startNumber={startNumber.length === 8 ? startNumber : ''} length={startNumber.length === 8 ? length : ''} />
+          {showComponent && <ResTable startNumber={startNumber.length === 8 ? startNumber : ''} length={startNumber.length === 8 ? length : ''} />} 
           </div>
         </div>
       </section>
