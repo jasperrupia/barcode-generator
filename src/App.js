@@ -7,21 +7,20 @@ function App() {
   const [length, setLength] = useState("");
   const [showComponent, setShowComponent] = useState(false);
   const [buttonValue, setButtonValue] = useState("Generate");
-  // const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
   const handleButtonClick = () => {
-  //   if (startNumber.trim() === '' || length.trim() === '') {
-  //     setError('Please enter numbers before clicking the button.');
-  //   } else if(startNumber.trim() < 10000000) {
-  //     setError('Input number must be greater than 1,000,000');
-  //   }else{ 
-  //     setError('');
-  //     console.log('Number input is:', startNumber, ' and length is', length);
-  //     setStartNumber(10000001)
-  //     setLength(40)
-  //   }
-    setShowComponent(true);
-    setButtonValue("Done");
+    if (startNumber.trim() === '' || length.trim() === '') {
+      setError('Please enter numbers before clicking the button.');
+    }else if(startNumber.trim() < 10000000) {
+      setError('Input number must consist of 8 digits');
+    }else if(length.trim() > 10000) {
+      setError('Maximam length is 10,000 otherwise the export file will be hardto manage');
+    }else{ 
+      setError('');
+      setShowComponent(true);
+      setButtonValue("Done");
+    }
   };
 
 
@@ -79,7 +78,7 @@ function App() {
                 </div>
               </div>
 
-              {/* {error && <div className="w-full pb-2 text-center text-red-500">{error}</div>} */}
+              {error && <div className="w-full pb-2 text-center text-red-500">{error}</div>}
               
               <div className="p-2 w-full">
                 <button 
@@ -93,7 +92,7 @@ function App() {
             </div>
           </div>
 
-          {showComponent && <ResTable startNumber={startNumber.length === 8 ? startNumber : ''} length={startNumber.length === 8 ? length : ''} />}
+          {showComponent && <ResTable startNumber={startNumber.length === 8 ? startNumber : ''} length={length <= 10000 ? length : ''} />}
           
         </div>
       </section>
