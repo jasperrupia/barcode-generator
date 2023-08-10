@@ -24,6 +24,7 @@ function App() {
     setButtonValue("Done");
   };
 
+
   return (
     <>
       <section className="text-gray-600 body-font relative">
@@ -92,9 +93,8 @@ function App() {
             </div>
           </div>
 
-          <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200">
-          {showComponent && <ResTable startNumber={startNumber.length === 8 ? startNumber : ''} length={startNumber.length === 8 ? length : ''} />} 
-          </div>
+          {showComponent && <ResTable startNumber={startNumber.length === 8 ? startNumber : ''} length={startNumber.length === 8 ? length : ''} />}
+          
         </div>
       </section>
     </>
